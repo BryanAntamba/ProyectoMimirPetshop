@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nombre</th>
+                            <th>Nombre y Apellido</th>
                             <th>Email</th>
                             <th>Teléfono</th>
                             <th>Acciones</th>
@@ -68,7 +68,7 @@
             <form id="clienteForm">
                 <input type="hidden" id="clienteId">
                 <div class="form-group">
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre">Nombre y Apellido:</label>
                     <input type="text" id="nombre" required pattern="[A-Za-zÀ-ÿ\s]{3,}" title="Nombre: sólo letras y espacios (mín. 3 caracteres)" maxlength="50" oninvalid="this.setCustomValidity('El nombre es obligatorio')" oninput="this.setCustomValidity('')">
                 </div>
                 <div class="form-group">
@@ -106,10 +106,9 @@
                         <option value="Comida para Perro">Comida para Perro</option>
                         <option value="Comida para Gato">Comida para Gato</option>
                         <option value="Comida para Aves">Comida para Aves</option>
-                        <option value="Accesorios">Accesorios</option>
-                        <option value="Higiene">Higiene</option>
-                        <option value="Medicamentos">Medicamentos</option>
-                        <option value="Juguetes">Juguetes</option>
+                        <option value="Comida de conejo">Comida de conejo</option>
+                        <option value="Comida para cuy">Comida para cuy</option>
+                        <option value="Comida para hammster">Comida para hammster</option>
                     </select>
                 </div>
                 <button type="submit" class="btn-primary">Guardar</button>
