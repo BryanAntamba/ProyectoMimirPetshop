@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // === PAGO Y TRANSFERENCIA (muchas variaciones) ===
     if(has('pago','pagar','transferencia','banco','dinero','cómo pago','método pago','cómo compro','cómo se paga','cómo realizo pago','forma de pago')){
-      return '💳 Cómo Pagar:\n1) Haz clic en "PAGAR" desde carrito\n2) Elige opción bancaria:\n   • BANCO PICHINCHA → aparece número/CTA\n   • BANCO GUAYAQUIL → aparece número/CTA\n3) Realiza transferencia desde tu banco (monto exacto)\n4) Captura comprobante (foto o PDF)\n5) Envía a: mimirpetshop@gmail.com\n6) Indicar: nombre, celular, monto\n7) Confirmamos en 10 a 15 minutos\n8) Recibirás correo de pago aceptado + entrega\nSeguro, rápido y confiable.';
+      return '💳 Cómo Pagar:\n1) Haz clic en "PAGAR" desde carrito\n2) Elige opción bancaria:\n   • BANCO PICHINCHA → aparece número/CTA\n   • BANCO GUAYAQUIL → aparece número/CTA\n3) Realiza transferencia desde tu banco (monto exacto)\n4) Captura comprobante (foto o PDF)\n5) Envía a: mimirpetshop@gmail.com\n6) Indicar: nombre, celular, monto, direccion de su domicilio para la entrega,\n7) Confirmamos en 10 a 15 minutos\n8) Recibirás correo de pago aceptado + entrega\nSeguro, rápido y confiable.';
     }
 
     if(has('banco pichincha','pichincha','numero pichincha','cta pichincha','transferencia pichincha')) return '🏦 Banco Pichincha:\nEn "Pagar" verás la CTA Pichincha. Transfiere el monto exacto. Luego envía screenshot/PDF a mimirpetshop@gmail.com con tu nombre. ¡Confirmaremos en 10 a 15 minutos!';
