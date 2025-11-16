@@ -1,0 +1,190 @@
+.veterinario-section {
+  padding: 50px 20px;
+  text-align: center;
+  background: #fdfdfd;
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+}
+
+/* TITULO PRINCIPAL */
+.titulo-principal {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #f97717;
+}
+
+/* CONTENIDO */
+.contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* IMAGEN */
+.imagen-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.imagen-veterinaria {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* TEXTO */
+.texto-container {
+  flex: 1;
+  text-align: left;
+  padding: 10px 20px;
+}
+
+.texto-container h3 {
+  color: #f97717;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.texto-container p {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* CONTACTOS */
+.contactos {
+  margin-top: 60px;
+}
+
+.contactos h2 {
+  color: #f97717;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.enlaces {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.enlaces a {
+  text-decoration: none;
+  color: white;
+  background: #f97717;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.enlaces a:hover {
+  background: #fbaa20;
+}
+
+/* Animaciones (inicialmente ocultas) */
+.animar-izquierda, .animar-derecha, .animar-abajo {
+  opacity: 0;
+  transform: translateY(0);
+  transition: all 1s ease;
+}
+
+/* Posición inicial de cada animación */
+.animar-izquierda {
+  transform: translateX(-100px);
+}
+
+.animar-derecha {
+  transform: translateX(100px);
+}
+
+.animar-abajo {
+  transform: translateY(-50px);
+}
+
+/* Clase activa cuando se muestra */
+.visible {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* ==== Sección Cómo Llegar ==== */
+.como-llegar-section {
+  text-align: center;
+  padding: 60px 20px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease;
+}
+
+.como-llegar-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.titulo-como-llegar {
+  font-size: 2rem;
+  color: #f97717;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.mapa-container {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1s ease 0.3s;
+}
+
+.mapa-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animaciones base (para títulos y secciones que se despliegan) */
+.animate-up {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease;
+}
+.animate-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .contenido {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .texto-container {
+    text-align: center;
+  }
+
+  .imagen-veterinaria {
+    max-width: 90%;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .titulo-como-llegar {
+    font-size: 1.5rem;
+  }
+  .mapa-container iframe {
+    height: 300px;
+  }
+}

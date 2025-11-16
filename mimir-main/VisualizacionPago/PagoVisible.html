@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagar – MimirPetShop</title>
+  <link rel="icon" href="../logo/Icono-Petshop.png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/chatbot.css">
+  <style>
+    :root{--border:#e2e8f0;--muted:#64748b;--primary:#0ea5e9;--primary-700:#0369a1}
+    body{background:#f8fafc}
+    .checkout{max-width:980px;margin:30px auto;padding:0 16px}
+    .panel{border:1px solid var(--border);border-radius:14px;padding:16px;background:#fff}
+    .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    ul.items{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    li.item{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff}
+    .left{display:flex;gap:10px;align-items:center}
+    .thumb{width:60px;height:60px;object-fit:contain;border:1px solid var(--border);border-radius:10px;padding:6px;background:#f8fafc}
+    .sku{color:var(--muted);font-size:.85rem}
+    .total{display:flex;justify-content:flex-end;gap:10px;margin-top:14px;font-weight:800}
+    .btn{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}
+    .btn:hover{background:var(--primary-700)}
+    .empty{padding:20px;text-align:center;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR mínimo (puedes reemplazarlo por tu navbar completo) -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="../index.html" class="logo-link">
+          <div class="logo"><img src="../logo/Icono-Petshop.png" id="logoImage" alt=""></div>
+          <span class="brand">MimirPetShop</span>
+        </a>
+      </div>
+      <div class="nav-menu">
+        <a href="../index.html#nosotros" class="nav-link">Nosotros</a>
+        <a href="../veterinaria/productos.html" class="nav-link">Productos</a>
+        <a href="../index.html#contactos" class="nav-link">Contactos</a>
+        <a href="../veterinaria/veterinaria.html" class="nav-link">Veterinaria</a>
+        <a href="../login/login.html" class="nav-link nav-btn">Cerrar Sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="checkout">
+    <h1>Resumen de compra</h1>
+    <div class="panel">
+      <div class="h"><strong>Productos</strong><span id="count">0 artículos</span></div>
+      <ul id="list" class="items"></ul>
+      <div id="empty" class="empty" style="display:none">Tu carrito está vacío.</div>
+      <div class="total">Total: $<span id="total">0.00</span></div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
+        <button id="seguir" class="btn" type="button">Seguir comprando</button>
+        <button id="confirmar" class="btn" type="button">Confirmar compra</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/admin-access.js"></script>
+ <script src="../js/admin-access.js"></script>
+<script>
+  // === (Opcional) Verificar si el usuario tiene sesión activa ===
+  // const s = JSON.parse(localStorage.getItem("mimir_session") || "null");
+  // if (!s) {
+  //   location.href = `../login/login.html?next=${encodeURIComponent(location.pathname)}`;
+  // }
+
+  // === Función para formatear precios ===
+  const fmt = (n) => (Math.round(n * 100) / 100).toFixed(2);
+
+  // === Cargar el carrito desde localStorage ===
+  let cart = [];
+  try {
+    cart = JSON.parse(localStorage.getItem("mimir_cart") || "[]");
+  } catch {
+    cart = [];
+  }
+
+  // === Referencias del DOM ===
+  const list = document.getElementById("list");
+  const totalEl = document.getElementById("total");
+  const countEl = document.getElementById("count");
+  const emptyEl = document.getElementById("empty");
+
+  // === Renderizar los productos del carrito ===
+  function render() {
+    list.innerHTML = "";
+
+    if (!Array.isArray(cart) || cart.length === 0) {
+      emptyEl.style.display = "block";
+      totalEl.textContent = "0.00";
+      countEl.textContent = "0 artículos";
+      return;
+    }
+
+    emptyEl.style.display = "none";
+    let total = 0, items = 0;
+
+    cart.forEach((it) => {
+      items += it.qty;
+      total += it.price * it.qty;
+
+      const li = document.createElement("li");
+      li.className = "item";
+      li.innerHTML = `
+        <div class="left">
+          <img class="thumb" src="${it.img || ""}" alt="">
+          <div>
+            <div><strong>${it.name}</strong></div>
+            <div class="sku">SKU: ${it.sku}</div>
+            <div>Cant: ${it.qty} · $${fmt(it.price)} c/u</div>
+          </div>
+        </div>
+        <div><strong>$${fmt(it.price * it.qty)}</strong></div>
+      `;
+      list.appendChild(li);
+    });
+
+    totalEl.textContent = fmt(total);
+    countEl.textContent = `${items} ${items === 1 ? "artículo" : "artículos"}`;
+  }
+
+  render();
+
+  // === Botón: seguir comprando ===
+  document.getElementById("seguir").onclick = () => {
+    location.href = "../veterinaria/productos.html";
+  };
+
+  // === Botón: confirmar compra (mejorado) ===
+  document.getElementById("confirmar").onclick = () => {
+    if (!Array.isArray(cart) || cart.length === 0) {
+      alert("Tu carrito está vacío 🐶");
+      return;
+    }
+
+    // Guarda el carrito actual antes de ir a pagar2.html (por si quieres mostrarlo allá)
+    localStorage.setItem("mimir_cart", JSON.stringify(cart));
+
+    // Redirigir directamente a la sección de depósito (pagar2.html)
+    location.href = "../SesionIniciada/pagar/pagar2.html";
+  };
+</script>
+<script src="../js/chatbot.js" defer></script>
+</body>
+</html>

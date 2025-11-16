@@ -1,0 +1,184 @@
+/* --- SECCIÓN DE DEPÓSITO --- */
+.deposito-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #fdf5e8;
+  color: #222;
+  font-family: "Poppins", sans-serif;
+}
+
+.deposito-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo-deposito {
+  width: 120px;
+  margin-bottom: 20px;
+  animation: flotando 3s ease-in-out infinite;
+}
+
+@keyframes flotando {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.deposito-container h2 {
+  color: #f97717;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.nombre {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Contenedor de cuentas */
+.cuentas-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.cuenta {
+  flex: 1;
+  min-width: 250px;
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.cuenta:hover {
+  transform: translateY(-5px);
+}
+
+.cuenta h3 {
+  color: #f97717;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.numero-cuenta {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* Resplandor debajo del número */
+.resplandor {
+  height: 6px;
+  border-radius: 3px;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 0 0 15px 5px currentColor;
+}
+
+.resplandor.amarillo {
+  background: #fdd835;
+  color: #fdd835;
+}
+
+.resplandor.celeste {
+  background: #d30873;
+  color: #de127f;
+}
+
+/* --- ANIMACIONES DESDE ABAJO --- */
+.animar-arriba {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.btn-finalizar {
+    margin-top: 25px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn-finalizar:hover {
+    background-color: #e67e00;
+    transform: scale(1.05);
+  }
+
+.btn-finalizar {
+    margin-top: 25px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn-finalizar:hover {
+    background-color: #e67e00;
+    transform: scale(1.05);
+  }
+
+  /* 🔹 Mensaje centrado en pantalla */
+  .mensaje-exito {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    animation: aparecer 0.3s ease-in-out;
+  }
+
+  .mensaje-exito::before {
+    content: "¡Compra exitosa!";
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  @keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+/* RESPONSIVIDAD */
+@media (max-width: 768px) {
+  .cuentas-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cuenta {
+    width: 90%;
+  }
+
+  .numero-cuenta {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,290 @@
+/* 🌟 Panel Administrativo Moderno (Clientes y Productos) */
+
+body {
+    background: #f5f6fa;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🔹 Contenedor principal */
+.admin-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* 🔹 Encabezado */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #f97316, #fbbf24);
+    color: white;
+    padding: 1.2rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+#btnLogout {
+    background: #c82333;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#btnLogout:hover {
+    background: #a71d2a;
+    transform: scale(1.05);
+}
+
+/* 🔹 Tabs del menú */
+.menu-tabs {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.tab {
+    background: #e9ecef;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tab:hover {
+    background: #d6d8db;
+}
+
+.tab.active {
+    background: #007bff;
+    color: white;
+    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* 🔹 Tarjeta del CRUD */
+.table-container {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+/* 🔹 Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+th {
+    background-color: #f1f3f6;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+/* 🔹 Botones CRUD */
+.btn-action {
+    padding: 0.6rem 1rem;
+    margin: 0 0.25rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+/* 🔹 Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 8% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.close:hover {
+    color: #000;
+    transform: scale(1.2);
+}
+
+/* 🔹 Formularios del modal */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.6rem 0rem;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+/**/
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+/* 🔹 Secciones (Clientes / Productos) */
+.section {
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.section.active {
+    display: block;
+    opacity: 1;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+    font-size: 15px;
+}
+
+.form-group select {
+    padding: 10px 12px;
+    border: 2px solid #d1d1d1;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+/* Focus */
+.form-group select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.35);
+}
+
+/* Hover */
+.form-group select:hover {
+    border-color: #7aa7ff;
+}
+
+/* Placeholder (la primera opción) */
+.form-group select option[value=""] {
+    color: #777;
+}
+
+/* Opciones */
+.form-group select option {
+    padding: 10px;
+}

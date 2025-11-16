@@ -1,0 +1,202 @@
+/* ==============================
+   MimirPetShop · MINI CART CSS
+   (complementa productos.css)
+   ============================== */
+
+:root{
+  --bg: #f8fafc;
+  --surface:#ffffff;
+  --surface-2:#f1f5f9;
+  --text:#0f172a;
+  --muted:#64748b;
+  --primary:#0ea5e9;
+  --primary-700:#0369a1;
+  --border:#e2e8f0;
+  --radius:16px;
+  --shadow:0 14px 40px rgba(2,6,23,.16);
+}
+
+/* Badge en el nav */
+.cart-link{
+  display:inline-flex; align-items:center; gap:8px;
+  position: relative; font-weight:700;
+}
+.cart-count{
+  background:#ef4444; color:#fff; font-weight:800; font-size:12px;
+  padding:2px 8px; border-radius:999px; line-height:1;
+}
+
+/* Mini cart contenedor */
+.mini-cart{
+  position:fixed;
+  right:16px; bottom:16px;
+  width:min(380px, 92vw);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  transform: translateY(20px);
+  opacity:0; visibility:hidden;
+  transition:.22s ease;
+  z-index:999;
+}
+.mini-cart.show{
+  transform: translateY(0);
+  opacity:1; visibility:visible;
+}
+
+/* Header */
+.mini-cart-header{
+  padding:12px 14px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.mini-cart-header h3{
+  margin:0;
+  font-size:1rem; font-weight:800; color:var(--text);
+}
+
+/* Body */
+.mini-cart-body{
+  max-height:320px;
+  overflow:auto;
+  padding:10px 14px;
+}
+.mini-cart-body .empty{
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Footer */
+.mini-cart-footer{
+  padding:12px 14px;
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px;
+}
+.mini-cart-footer .btn{
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+}
+.mini-cart-footer .btn:hover{
+  background: var(--primary-700);
+  transform: translateY(-1px);
+}
+
+/* Botón cerrar */
+.close-btn{
+  appearance:none; border:1px solid var(--border); background:#fff;
+  width:32px; height:32px; border-radius:10px; font-size:18px; line-height:1;
+  display:grid; place-items:center; cursor:pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.close-btn:hover{ background:#f1f5f9; }
+.close-btn:active{ transform: translateY(1px); }
+
+/* ==============================
+   Filas de items
+   ============================== */
+ul#cartItems{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+
+.cart-row{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px;
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+}
+
+.row-left{
+  display:flex; align-items:center; gap:10px; min-width:0;
+}
+
+.thumb{
+  width:54px; height:54px; object-fit:contain;
+  background:#f8fafc; border:1px solid var(--border);
+  border-radius:10px; padding:6px;
+  flex:0 0 auto;
+}
+
+.meta{
+  display:flex; flex-direction:column; min-width:0;
+}
+.name{
+  font-weight:700; color:var(--text);
+  margin:0; font-size:.95rem;
+  white-space:nowrap; text-overflow:ellipsis; overflow:hidden; max-width:180px;
+}
+.sku{
+  margin:0; font-size:.78rem; color:var(--muted);
+}
+
+.row-right{
+  display:flex; align-items:center; gap:10px;
+}
+
+/* Cantidad */
+.qty{
+  display:flex; align-items:center; gap:6px;
+  background:#f8fafc; border:1px solid var(--border);
+  border-radius:10px; padding:4px;
+}
+.qty-btn{
+  width:28px; height:28px; border:none; border-radius:8px;
+  background:#fff; cursor:pointer; font-size:18px; line-height:1;
+  display:grid; place-items:center;
+  transition: background .2s ease, transform .1s ease;
+}
+.qty-btn:hover{ background:#f1f5f9; }
+.qty-input{
+  width:54px; height:30px; border:1px solid var(--border);
+  border-radius:8px; text-align:center; font-weight:700;
+}
+
+/* Precio y eliminar */
+.price{
+  min-width:72px; text-align:right; font-weight:800; color:var(--primary-700);
+}
+.remove{
+  width:32px; height:32px; border:1px solid var(--border);
+  background:#fff; border-radius:10px; cursor:pointer; font-size:16px;
+  display:grid; place-items:center;
+  transition: background .2s ease, transform .1s ease;
+}
+.remove:hover{ background:#fee2e2; }
+
+/* Utilidad para ocultar */
+.hidden{ display:none !important; }
+
+/* Selector de cantidad en tarjetas */
+.qty-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 6px 0 8px;
+}
+
+.qty-select .qty-btn {
+  background: #ffb703;
+  border: none;
+  padding: 6px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.qty-select .qty-input {
+  width: 54px;
+  text-align: center;
+  padding: 6px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
